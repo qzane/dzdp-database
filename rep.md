@@ -8,9 +8,12 @@
 
 * characteristics字段中提及了：```停车、外送、下午茶、夜宵、早餐、24小时```也按照含义修改为5个字段
 
-* 为了体现优化效果，为了模拟硬件不充分的条件，更改了MySQL的默认参数:
+* 为了模拟硬件不充分的条件、体现优化效果，更改了MySQL的默认参数:
+
 >ket_buffer 1M改成了16K
+>
 >query cache limit 1M改128K
+>
 >query cache size 16M改256K
 
 
