@@ -5,11 +5,11 @@
 
 ### 读取数据
 注意到文件是UTF-8编码的
-```
+```python
 f = open('new.csv','r',encoding='utf-8')
 ```
 获取字段名
-```
+```python
 keys = f.readline().split(',')
 ```
 构造自动机对每个字段内的数据进行解析
@@ -29,12 +29,14 @@ def getdata(string):
 
 ### 清理数据
 使用numpy可以用类似于Matlab中的方法处理矩阵，可以方便的观察每一列的内容。
-```
+```python
 import numpy as np
 dd = np.array(data)
+dd[:,1] #查看所有shop_id
 ```
 使用dd[:,X]的方法逐列分析数据，得到下列有用信息：
 
+>0. 检查读入数据，没有异常
 >1. 查重、查空、确定主键：shop_id,name,alias
 >2. 对province,city,city_i进行统计
 >3. 记录address，对address,business_area进行统计
@@ -45,13 +47,13 @@ dd = np.array(data)
 >8. tags:逗号分隔标签
 >9. original_latitude,original_longitude:判断范围
 >10. navigation:级别，类似tag，重点处理!!!
->11. characteristics:停车、外送、下午茶
+>11. characteristics:停车、外送、下午茶、夜宵、早餐、24小时
 >12. product_rating,environment_rating,service_rating:10分制，有空缺，与stars对比
 >13. remarks...
 >14. recommended_dishes:逗号分隔，可用于建表
 >15. is_chains:0/1
 >16. groupon:套餐，分号分隔
->17. card:会员优惠
+>17. card:会员优惠,每家店只有一种
 
 ### 确定函数依赖
 shop_id -> all
@@ -59,13 +61,44 @@ city_id -> city -> province
 phone -> all
 
 ### 确定实体
+0. shop
 1. province
 2. city,city_i
 3. tags
 4. navigation
-5. groupon
-6. card
+5. recommended_dishes
+6. groupon
+7. card
 
 ### 确定关系
+province <--(1,n)--> city,city_i
+shop <--(n,1)-->city_i
+shop <--(n,n)--> tags
+navigation --(1,n)--> navigation
+shop <--(1,n)--> recommended_dishes
+shop <--(1,n)--> groupon
+shop <--(1,1)--> card
+
+### 建表
+#######**加粗**代表主键，*斜体*代表外键
+
+shop(**shop_id**,name,alias,*city_i*,area,address,business_area,phone,hours,avg_price,stars,photos,description,original_latitude,original_longitude,last_navigation,parking,delivery,breakfast,tea,night,product_rating,environment_rating,service_rating,very_good_remarks,good_remarks,common_remarks,bad_remarks,very_bad_remarks,recommended_dishes,is_chains,card)
+
+province(**name**)
+city(**city_i**,city,*province*)
+tags(**tag**)
+shopTags(**shop_id**,**tag**)
+navigation(**navigation**,*pre_navigation*,str)
+recommended_dishes(**dish**,*shop_id*)
+groupon(**groupon**,*shop_id*)
+card(**card**,__shop\_id___)
+
+
+
+
+
+
+
+
 
 
