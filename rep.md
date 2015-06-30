@@ -10,11 +10,11 @@
 
 * 为了模拟硬件不充分的条件、体现优化效果，更改了MySQL的默认参数:
 
->ket_buffer 1M改成了16K
+>key buffer 16M 改 16K
 >
->query cache limit 1M改128K
+>query cache limit 1M改1K
 >
->query cache size 16M改256K
+>query cache size 16M改1K
 
 
 
@@ -76,10 +76,6 @@ dd[:,1] #查看所有shop_id
 >16. groupon:套餐，分号分隔
 >17. card:会员优惠,每家店只有一种
 
-### 确定函数依赖
-shop_id -> all
-city_id -> city -> province
-phone -> all
 
 ### 确定实体
 0. shop
