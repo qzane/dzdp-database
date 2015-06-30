@@ -99,7 +99,10 @@ shop <--(1,1)--> card<br>
 ### 建表
 #######**加粗**代表主键，*斜体*代表外键
 
-shop(**shop_id**,name,alias,*city_i*,area,address,business_area,phone,hours,avg_price,stars,photos,description,original_latitude,original_longitude,product_rating,environment_rating,service_rating,very_good_remarks,good_remarks,common_remarks,bad_remarks,very_bad_remarks,is_chains,*last_navigation*,parking,delivery,breakfast,tea,night)#最后几项为原表中characteristics的内容拆分而来
+shop(**shop_id**,name,alias,*city_i*,area,address,business_area,phone,hours,avg_price,stars,photos,
+description,original_latitude,original_longitude,product_rating,environment_rating,service_rating,
+very_good_remarks,good_remarks,common_remarks,bad_remarks,very_bad_remarks,is_chains,*last_navigation*,
+parking,delivery,breakfast,tea,night)#最后几项为原表中characteristics的内容拆分而来
 
 province(**province**)
 
