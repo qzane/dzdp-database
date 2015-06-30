@@ -104,13 +104,13 @@ description,original_latitude,original_longitude,product_rating,environment_rati
 very_good_remarks,good_remarks,common_remarks,bad_remarks,very_bad_remarks,is_chains,*last_navigation*,
 parking,delivery,breakfast,tea,night)#最后几项为原表中characteristics的内容拆分而来
 
-province(**province**)
+province(province,**province_id**)
 
-city(**city\_id**,city,*province*)
+city(**city\_id**,city,*province_id*)
 
-tags(**tag**)
+tags(*tag*,**tag_id**)
 
-shoptags(__shop\_id__,**tag**)
+shoptags(__shop\_id__,*tag_id*)
 
 navigation(**navigation**,*pre\_navigation*,str) #str中列出前面的信息，加快读取
 
