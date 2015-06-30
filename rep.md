@@ -249,12 +249,12 @@ def make_shop(dd):
         shop[int(i[0])]=res
         
     f = open('shop.csv','w',encoding='utf-8')
-    f.write('''
-    shop_id,name,alias,city_i,area,address,business_area,
-    phone,hours,avg_price,stars,photos,description,original_latitude,
-    original_longitude,product_rating,environment_rating,service_rating,
-    very_good_remarks,good_remarks,common_remarks,bad_remarks,very_bad_remarks,
-    is_chains,last_navigation,parking,delivery,breakfast,tea,night\n''')
+    f.write('
+    shop_id,name,alias,city_i,area,address,business_area,\
+    phone,hours,avg_price,stars,photos,description,original_latitude,\
+    original_longitude,product_rating,environment_rating,service_rating,\
+    very_good_remarks,good_remarks,common_remarks,bad_remarks,very_bad_remarks,\
+    is_chains,last_navigation,parking,delivery,breakfast,tea,night\n')
     for i in shop:
         tmp = shop[i]
         f.write(tmp[0])
