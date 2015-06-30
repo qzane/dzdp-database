@@ -13,7 +13,7 @@ f = open('new.csv','r',encoding='utf-8')
 keys = f.readline().split(',')
 ```
 构造自动机对每个字段内的数据进行解析
-```
+``` python
 def getdata(string):
     data = []
     begin = -1
@@ -58,7 +58,7 @@ shop_id -> all
 city_id -> city -> province
 phone -> all
 
-### 确定主体
+### 确定实体
 1. province
 2. city,city_i
 3. tags
