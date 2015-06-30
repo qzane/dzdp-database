@@ -242,7 +242,25 @@ def make_shop(dd):
 
 
 
+# 查询&查询优化
 
+1. 查询所有店铺信息,包括城市、省份
+```sql
+SELECT * FROM `shop` join city join province where shop.city_i=city.city_i and city.province_id=province.province_id
+```
+查询花费 0.0011 秒
+
+2. 查询所有店名与该店铺的推荐菜数目,并根据数目从大到小排列
+```sql
+SELECT shop.name,count(recommended_dishes.shop_id) as recommended_dishes from shop join recommended_dishes where shop.shop_id=recommended_dishes.shop_id GROUP BY shop.name order by recommended_dishes DESC
+```
+查询花费 0.0168 秒
+
+3. 查询并统计不同省份的餐厅总数
+```sql
+SELECT province.province,count(shop.shop_id) as cc from province join city on(province.province_id=city.province_id) join shop on (city.city_i = shop.city_i) group by province.province_id order by cc
+```
+查询花费 0.0117 秒
 
 
 

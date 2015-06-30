@@ -27,37 +27,46 @@ def readData(fname='new.csv'):
     return(keys,data)
     
 def make_province(dd):
+    global PROVINCE
+    PROVINCE = {}
     p = set()
     for i in dd[:,3]:
         p.add(i)
     f = open('province.csv','w',encoding='utf-8')
-    f.write('province\n')
-    for i in p:
-        f.write("%s\n"%i)
+    f.write('province,province_id\n')
+    for i,j  in enumerate(p):
+        f.write("%s,%d\n"%(j,i))
+        PROVINCE[j]=i
     f.close()
     
 def make_city(dd):
+    global PROVINCE
     city = set()
     for i in dd[:,[5,4,3]]:
         city.add(tuple(i))
     f = open('city.csv','w',encoding='utf-8')
-    f.write('city_i,city,province\n')
+    f.write('city_i,city,province_id\n')
     for i in city:
-        f.write("%s,%s,%s\n"%(i[0],i[1],i[2]))
+        f.write("%s,%s,%s\n"%(i[0],i[1],PROVINCE[i[2]]))
     f.close()
     
 def make_tags(dd):
+    global TAG
+    TAG = {}
     tags = set()
     for i in dd[:,15]:
         tmp = i.split(',')
         for j in tmp:
             tags.add(j)
     f = open('tags.csv','w',encoding='utf-8')
-    f.write('tags\n')
-    for i in tags:
-        f.write("%s\n"%i)
+    f.write('tag,tag_id\n')
+    for i,j in enumerate(tags):
+        f.write("%s,%d\n"%(j,i))
+        TAG[j]=i
     f.close()
+    
 def make_shopTags(dd):
+    global TAG
     st = set()
     for i in dd[:,[0,15]]:
         tmp = i[1].split(',')
@@ -66,7 +75,7 @@ def make_shopTags(dd):
     f = open('shopTags.csv','w',encoding='utf-8')
     f.write('shop_id,tag\n')
     for i in st:
-        f.write("%s,%s\n"%(i[0],i[1]))
+        f.write("%s,%d\n"%(i[0],TAG[i[1]]))
     f.close()
     
 def make_recommended_dishes(dd):
