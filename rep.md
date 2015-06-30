@@ -101,8 +101,9 @@ shop <--(1,1)--> card<br>
 
 shop(**shop_id**,name,alias,*city_i*,area,address,business_area,phone,hours,avg_price,stars,photos,
 description,original_latitude,original_longitude,product_rating,environment_rating,service_rating,
-very_good_remarks,good_remarks,common_remarks,bad_remarks,very_bad_remarks,is_chains,*last_navigation*,
-parking,delivery,breakfast,tea,night)#最后几项为原表中characteristics的内容拆分而来
+very_good_remarks,good_remarks,common_remarks,bad_remarks,very_bad_remarks,is_chains,
+*last_navigation*,parking,delivery,breakfast,tea,night)
+\#最后几项为原表中characteristics的内容拆分而来
 
 province(province,**province_id**)
 
@@ -254,10 +255,12 @@ def make_shop(dd):
     f = open('shop.csv','w',encoding='utf-8')
     f.write('''
     shop_id,name,alias,city_i,area,address,business_area,\
-    phone,hours,avg_price,stars,photos,description,original_latitude,\
-    original_longitude,product_rating,environment_rating,service_rating,\
-    very_good_remarks,good_remarks,common_remarks,bad_remarks,very_bad_remarks,\
-    is_chains,last_navigation,parking,delivery,breakfast,tea,night\n''')
+    phone,hours,avg_price,stars,photos,description,\
+    original_latitude,original_longitude,product_rating,\
+    environment_rating,service_rating,very_good_remarks,\
+    good_remarks,common_remarks,bad_remarks,very_bad_remarks,\
+    is_chains,last_navigation,parking,delivery,breakfast,tea,\
+    night\n''')
     for i in shop:
         tmp = shop[i]
         f.write(tmp[0])
