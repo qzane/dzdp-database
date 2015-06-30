@@ -88,13 +88,13 @@ dd[:,1] #查看所有shop_id
 7. card
 
 ### 确定关系
-province <--(1,n)--> city,city_i
-shop <--(n,1)-->city_i
-shop <--(n,n)--> tags
-navigation --(1,n)--> navigation
-shop <--(1,n)--> recommended_dishes
-shop <--(1,n)--> groupon
-shop <--(1,1)--> card
+province <--(1,n)--> city,city_i <br>
+shop <--(n,1)-->city_i<br>
+shop <--(n,n)--> tags<br>
+navigation --(1,n)--> navigation<br>
+shop <--(1,n)--> recommended_dishes<br>
+shop <--(1,n)--> groupon<br>
+shop <--(1,1)--> card<br>
 
 ### 建表
 #######**加粗**代表主键，*斜体*代表外键
