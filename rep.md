@@ -13,7 +13,7 @@ f = open('new.csv','r',encoding='utf-8')
 keys = f.readline().split(',')
 ```
 构造自动机对每个字段内的数据进行解析
-``` python
+```python
 def getdata(string):
     data = []
     begin = -1
